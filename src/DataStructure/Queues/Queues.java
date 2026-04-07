@@ -1,0 +1,69 @@
+package DataStructure.Queues;
+
+public class Queues {
+    int[] arr;
+    int size;
+    int front;
+    int back;
+
+    Queues(int size) {
+        this.size = size;
+        arr = new int[size];
+        front = -1;
+        back = -1;
+
+    }
+
+    void push(int val) {
+        if (back == size - 1) {
+            System.out.println("overflown");
+            return;
+        }
+        back++;
+        arr[back] = val;
+
+        if (front == -1) {
+            front++;
+
+        }
+    }
+
+    void pop() {
+        if (front == -1 || front > back) {
+            System.out.println("underflown");
+            return;
+        }
+        front++;
+    }
+
+    int peek() {
+        if (front == -1 || front > back) {
+            System.out.println("underflown");
+            return -1;
+        }
+        return arr[front];
+    }
+    boolean isempty() {
+        return (front==-1||front>back);
+    }
+}
+class driver{
+    static void main(String[] args) {
+        Queues q=new Queues(5);
+        q.push(1);
+        q.push(2);
+        q.push(3);
+        q.push(5);
+        q.push(5);
+        System.out.println(q.peek());
+        q.pop();
+        System.out.println(q.peek());
+        q.pop();
+        System.out.println(q.peek());
+        q.pop();
+        System.out.println(q.peek());
+        q.pop();
+        q.pop();
+        System.out.println(q.isempty());
+    }
+}
